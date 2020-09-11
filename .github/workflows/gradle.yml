@@ -39,8 +39,8 @@ jobs:
       uses: actions/upload-artifact@v2
       if: success()
       with:
-        name: standup-it-0.0.1-${{ github.run_number }}.jar
-        path: build/libs/standup-it-0.0.1-SNAPSHOT.jar 
+        name: crawler-0.0.1-${{ github.run_number }}.jar
+        path: build/libs/crawler-0.0.1-SNAPSHOT.jar 
 
   clean:
     runs-on: ubuntu-latest
