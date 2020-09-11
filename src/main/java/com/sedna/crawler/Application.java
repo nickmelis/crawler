@@ -9,15 +9,17 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sedna.crawler.model.PageResults;
 import com.sedna.crawler.service.CrawlerService;
+import com.sedna.crawler.service.ResultAggregatorService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
   @Autowired
   private CrawlerService crawlerService;
+  @Autowired
+  private ResultAggregatorService resultAggregatorService;
   @Autowired
   private Logger logger;
 
@@ -33,8 +35,10 @@ public class Application implements CommandLineRunner {
       logger.error("No URL provided");
       System.exit(-1);
     }
+    // Get crawler results
     List<PageResults> results = crawlerService.search(args[0]);
-    logger.debug(new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(results));
 
+    // Aggregate and consume results
+    resultAggregatorService.aggregate(results);
   }
 }

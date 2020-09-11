@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
 @Configuration
 public class ApplicationConfiguration {
 
@@ -16,5 +19,11 @@ public class ApplicationConfiguration {
   public Logger logger(InjectionPoint injectionPoint) {
     Class<?> clazz = injectionPoint.getMember().getDeclaringClass();
     return LoggerFactory.getLogger(clazz);
+  }
+
+  @Bean
+  public ObjectMapper objectMapper() {
+    return new ObjectMapper()
+      .enable(SerializationFeature.INDENT_OUTPUT);
   }
 }
