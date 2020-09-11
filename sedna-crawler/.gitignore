@@ -1,0 +1,14 @@
+/.gradle/
+/.settings/
+/.idea/
+/bin/
+/build/
+/open_source_dependencies/
+/target/
+/out/
+.classpath
+.DS_Store
+.project
+backend.iml
+*.log
+*.class

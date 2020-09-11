@@ -1,0 +1,60 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.sedna'
+version = '0.0.1-SNAPSHOT'
+mainClassName = 'com.sedna.crawler.Application'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    jcenter()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src/main/java'
+        }
+        resources {
+            srcDirs 'src/main/resources'
+        }
+    }
+    test {
+        java {
+            srcDirs 'src/test/java'
+        }
+    }
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath(
+                "org.springframework.boot:spring-boot-gradle-plugin:2.2.+",
+        )
+    }
+}
+
+configurations {
+    dynamodb
+}
+
+dependencies {
+    implementation(
+            'org.springframework.boot:spring-boot-starter:2.3.+',
+            'org.jsoup:jsoup:1.13.1',
+            'com.fasterxml.jackson.core:jackson-databind:2.11.2',
+    )
+
+    testImplementation(
+            'org.springframework.boot:spring-boot-starter-test:2.3.+',
+    )
+}
