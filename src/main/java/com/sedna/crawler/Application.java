@@ -1,6 +1,6 @@
 package com.sedna.crawler;
 
-import java.util.List;
+import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class Application implements CommandLineRunner {
       System.exit(-1);
     }
     // Get crawler results
-    List<PageResults> results = crawlerService.search(args[0]);
+    Stream<PageResults> results = crawlerService.search(args[0]);
 
     // Aggregate and consume results
     resultAggregatorService.aggregate(results);

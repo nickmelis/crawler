@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -50,7 +51,7 @@ public class CrawlerServiceTest {
         .withStaticAssets(StaticAssets.builder().build())
         .build());
 
-    List<PageResults> result = service.search(urlToVisit.toExternalForm());
+    List<PageResults> result = service.search(urlToVisit.toExternalForm()).collect(Collectors.toList());
 
     assertThat(result, hasSize(1));
     assertThat(result.get(0).getPageUrl(), is(urlToVisit));
@@ -76,7 +77,7 @@ public class CrawlerServiceTest {
         .withStaticAssets(StaticAssets.builder().build())
         .build());
 
-    List<PageResults> result = service.search(homePage.toExternalForm());
+    List<PageResults> result = service.search(homePage.toExternalForm()).collect(Collectors.toList());
 
     assertThat(result, hasSize(2));
     // Home page
@@ -106,7 +107,7 @@ public class CrawlerServiceTest {
           .build())
         .build());
 
-    List<PageResults> result = service.search(urlToVisit.toExternalForm());
+    List<PageResults> result = service.search(urlToVisit.toExternalForm()).collect(Collectors.toList());
 
     assertThat(result, hasSize(1));
     assertThat(result.get(0).getPageUrl(), is(urlToVisit));

@@ -1,6 +1,7 @@
 package com.sedna.crawler.service;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import com.sedna.crawler.model.PageResults;
 
@@ -17,6 +18,6 @@ public interface ResultAggregatorService {
    *
    * @param results the {@link List} of {@link PageResults} from the crawler process
    */
-  void aggregate(List<PageResults> results);
+  void aggregate(Stream<PageResults> results);
 
 }
