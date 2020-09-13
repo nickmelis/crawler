@@ -3,6 +3,8 @@ A dead simple crawler to generate a site map of your website
 
 ![Build](https://github.com/nickmelis/crawler/workflows/Build/badge.svg)
 
+The code has been compiled using Java 11, so it may not compile if using previous versions of the JDK.
+
 This project uses Gradle as dependency manager, so in order to build it, it's enough to check out the code and do 
 
 ``gradle build``
