@@ -9,7 +9,8 @@ This project uses Gradle as dependency manager, so in order to build it, it's en
 
 ``gradle build``
 
-The app JAR can be run directly with 
+Gradle builds an application jar in `./build/libs`.
+The app JAR can then be run directly with 
 
 ``java -jar crawler-0.0.1-SNAPSHOT.jar https://your-website.com`` 
 
