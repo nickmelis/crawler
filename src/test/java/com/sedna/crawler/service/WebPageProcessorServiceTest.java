@@ -2,6 +2,7 @@ package com.sedna.crawler.service;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Mockito.when;
 
@@ -55,6 +56,35 @@ public class WebPageProcessorServiceTest {
     assertThat(results.getPageUrl(), is(productUrl));
     assertThat(results.getLinks(), hasItems(cartUrl));
     assertThat(results.getStaticAssets().getImages(), hasItems(imageUrl));
+    assertThat(results.getStaticAssets().getCss(), hasItems(cssUrl));
+    assertThat(results.getStaticAssets().getJs(), hasItems(jsUrl));
+  }
+
+  @Test
+  public void whenProcessingPageWithExternalLinks_willReturnInternalLinksOnly() throws IOException, PageProcessingException {
+    URL productUrl = new URL("https://sedna.com/product");
+    String productHtml = "<html>"
+      + "  <head>"
+      + "    <script src=\"/static/js/abc.js\" type=\"text/javascript\" ></script>"
+      + "    <link rel=\"stylesheet\" type=\"text/css\" href=\"/static/css/style.css\">"
+      + "  </head>"
+      + "  <body>"
+      + "    <a href=\"/cart\">Blah</a>"
+      + "    <a href=\"https://www.linkedin.com/company/sedna-network/\">LinkedIn</a>\""
+      + "  </body>"
+      + "</html>";
+    when(httpService.get(productUrl)).thenReturn(Jsoup.parse(productHtml, productUrl.toExternalForm()));
+
+    URL cartUrl = new URL("https://sedna.com/cart");
+    URL cssUrl = new URL("https://sedna.com/static/css/style.css");
+    URL jsUrl = new URL("https://sedna.com/static/js/abc.js");
+
+    PageResults results = service.process(productUrl);
+
+    assertThat(results.getPageUrl(), is(productUrl));
+    assertThat(results.getLinks(), hasSize(1));
+    assertThat(results.getLinks(), hasItems(cartUrl));
+    assertThat(results.getStaticAssets().getImages(), hasSize(0));
     assertThat(results.getStaticAssets().getCss(), hasItems(cssUrl));
     assertThat(results.getStaticAssets().getJs(), hasItems(jsUrl));
   }
