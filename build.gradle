@@ -2,8 +2,6 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'jacoco'
-apply plugin: 'com.github.dawnwords.jacoco.badge'
 
 group = 'com.sedna'
 version = '0.0.1-SNAPSHOT'
@@ -16,6 +14,7 @@ java {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 sourceSets {
