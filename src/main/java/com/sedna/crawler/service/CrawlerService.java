@@ -2,6 +2,7 @@ package com.sedna.crawler.service;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,14 +48,17 @@ public class CrawlerService {
   public Stream<PageResults> search(String url) throws MalformedURLException {
 
     // Auxiliary structures for this iteration
-    Set<URL> pagesVisited = new HashSet<>();
-    List<URL> pagesToVisit = new LinkedList<>();
+    // Note: if we want the stream generated later on to be a parallel stream,
+    // we need the following two structures to be thread safe
+    Set<URL> pagesVisited = Collections.synchronizedSet(new HashSet<>());
+    List<URL> pagesToVisit = Collections.synchronizedList(new LinkedList<>());
 
     // Start with URL provided
     pagesToVisit.add(new URL(url));
 
-    // Create stream of results
-    return StreamSupport.stream(new GeneratingSpliterator(pagesToVisit, pagesVisited), false);
+    // Create stream of results - The resulting stream will be a parallel stream, so that
+    // crawling operations don't have to go sequentially. This will result in better performances
+    return StreamSupport.stream(new GeneratingSpliterator(pagesToVisit, pagesVisited), true);
   }
 
   private PageResults processPage(
