@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
@@ -25,5 +26,10 @@ public class ApplicationConfiguration {
   public ObjectMapper objectMapper() {
     return new ObjectMapper()
       .enable(SerializationFeature.INDENT_OUTPUT);
+  }
+
+  @Bean
+  public JsonFactory jsonFactory() {
+    return new JsonFactory();
   }
 }

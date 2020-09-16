@@ -54,6 +54,5 @@ public class ConsoleResultAggregatorServiceTest {
     verify(objectMapper).writeValueAsString(result2);
 
     verify(logger).info("Results: \n{}", "[result1,\nresult2]");
-
   }
 }
