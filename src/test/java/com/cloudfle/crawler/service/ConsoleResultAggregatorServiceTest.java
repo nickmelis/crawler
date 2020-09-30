@@ -32,7 +32,7 @@ public class ConsoleResultAggregatorServiceTest {
 
   @Test
   public void whenStreamingTwoResults_willPrintThemInTheConsole() throws MalformedURLException, JsonProcessingException {
-    URL homePage = new URL("https://sedna.com/");
+    URL homePage = new URL("https://cloudfle.com/");
     URL contactPage = new URL(homePage + "contact");
 
     PageResults result1 = PageResults.builder()

@@ -33,7 +33,7 @@ public class WebPageProcessorServiceTest {
 
   @Test
   public void whenProcessingProductPage_willReturnResultWithLinksAndStaticAssets() throws IOException, PageProcessingException {
-    URL productUrl = new URL("https://sedna.com/product");
+    URL productUrl = new URL("https://cloudfle.com/product");
     String productHtml = "<html>"
       + "  <head>"
       + "    <script src=\"/static/js/abc.js\" type=\"text/javascript\" ></script>"
@@ -41,15 +41,15 @@ public class WebPageProcessorServiceTest {
       + "  </head>"
       + "  <body>"
       + "    <a href=\"/cart\">Blah</a>"
-      + "    <img src=\"/static/images/image.png\" alt=\"SEDNA\">"
+      + "    <img src=\"/static/images/image.png\" alt=\"cloudfle\">"
       + "  </body>"
       + "</html>";
     when(httpService.get(productUrl)).thenReturn(Jsoup.parse(productHtml, productUrl.toExternalForm()));
 
-    URL cartUrl = new URL("https://sedna.com/cart");
-    URL imageUrl = new URL("https://sedna.com/static/images/image.png");
-    URL cssUrl = new URL("https://sedna.com/static/css/style.css");
-    URL jsUrl = new URL("https://sedna.com/static/js/abc.js");
+    URL cartUrl = new URL("https://cloudfle.com/cart");
+    URL imageUrl = new URL("https://cloudfle.com/static/images/image.png");
+    URL cssUrl = new URL("https://cloudfle.com/static/css/style.css");
+    URL jsUrl = new URL("https://cloudfle.com/static/js/abc.js");
 
     PageResults results = service.process(productUrl);
 
@@ -62,7 +62,7 @@ public class WebPageProcessorServiceTest {
 
   @Test
   public void whenProcessingPageWithExternalLinks_willReturnInternalLinksOnly() throws IOException, PageProcessingException {
-    URL productUrl = new URL("https://sedna.com/product");
+    URL productUrl = new URL("https://cloudfle.com/product");
     String productHtml = "<html>"
       + "  <head>"
       + "    <script src=\"/static/js/abc.js\" type=\"text/javascript\" ></script>"
@@ -70,14 +70,14 @@ public class WebPageProcessorServiceTest {
       + "  </head>"
       + "  <body>"
       + "    <a href=\"/cart\">Blah</a>"
-      + "    <a href=\"https://www.linkedin.com/company/sedna-network/\">LinkedIn</a>\""
+      + "    <a href=\"https://www.linkedin.com/company/cloudfle-network/\">LinkedIn</a>\""
       + "  </body>"
       + "</html>";
     when(httpService.get(productUrl)).thenReturn(Jsoup.parse(productHtml, productUrl.toExternalForm()));
 
-    URL cartUrl = new URL("https://sedna.com/cart");
-    URL cssUrl = new URL("https://sedna.com/static/css/style.css");
-    URL jsUrl = new URL("https://sedna.com/static/js/abc.js");
+    URL cartUrl = new URL("https://cloudfle.com/cart");
+    URL cssUrl = new URL("https://cloudfle.com/static/css/style.css");
+    URL jsUrl = new URL("https://cloudfle.com/static/js/abc.js");
 
     PageResults results = service.process(productUrl);
 

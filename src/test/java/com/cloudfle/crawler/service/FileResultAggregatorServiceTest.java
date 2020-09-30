@@ -48,7 +48,7 @@ public class FileResultAggregatorServiceTest {
 
   @Test
   public void whenStreamingTwoResults_willSaveThemIntoAFile() throws IOException {
-    URL homePage = new URL("https://sedna.com/");
+    URL homePage = new URL("https://cloudfle.com/");
     URL contactPage = new URL(homePage + "contact");
 
     PageResults result1 = PageResults.builder()

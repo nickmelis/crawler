@@ -44,7 +44,7 @@ public class CrawlerServiceTest {
 
   @Test
   public void whenFetchingUrl_willReturnASinglePageWithNoLinks() throws PageProcessingException, MalformedURLException {
-    URL urlToVisit = new URL("https://sedna.com");
+    URL urlToVisit = new URL("https://cloudfle.com");
     when(webPageProcessorService.process(urlToVisit))
       .thenReturn(PageResults.builder()
         .withPageUrl(urlToVisit)
@@ -62,7 +62,7 @@ public class CrawlerServiceTest {
 
   @Test
   public void whenFetchingUrl_willReturnTwoInterLinkedPages() throws PageProcessingException, MalformedURLException {
-    URL homePage = new URL("https://sedna.com/");
+    URL homePage = new URL("https://cloudfle.com/");
     URL contactPage = new URL(homePage + "contact");
     when(webPageProcessorService.process(homePage))
       .thenReturn(PageResults.builder()
@@ -92,7 +92,7 @@ public class CrawlerServiceTest {
 
   @Test
   public void whenFetchingUrl_willReturnASinglePageWithStaticAssets() throws PageProcessingException, MalformedURLException {
-    URL urlToVisit = new URL("https://sedna.com/");
+    URL urlToVisit = new URL("https://cloudfle.com/");
     URL imageUrl = new URL(urlToVisit + "assets/images/image.jpg");
     URL cssUrl = new URL(urlToVisit + "assets/css/style.css");
     URL jsUrl = new URL(urlToVisit + "assets/js/script.js");

@@ -3,9 +3,9 @@ apply plugin: 'eclipse'
 apply plugin: 'application'
 apply plugin: 'org.springframework.boot'
 
-group = 'com.sedna'
+group = 'com.cloudfle'
 version = '0.0.1-SNAPSHOT'
-mainClassName = 'com.sedna.crawler.Application'
+mainClassName = 'com.cloudfle.crawler.Application'
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
