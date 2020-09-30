@@ -1,4 +1,4 @@
-package com.sedna.crawler;
+package com.cloudfle.crawler;
 
 import java.util.stream.Stream;
 
@@ -9,9 +9,9 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import com.sedna.crawler.model.PageResults;
-import com.sedna.crawler.service.CrawlerService;
-import com.sedna.crawler.service.ResultAggregatorService;
+import com.cloudfle.crawler.model.PageResults;
+import com.cloudfle.crawler.service.CrawlerService;
+import com.cloudfle.crawler.service.ResultAggregatorService;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

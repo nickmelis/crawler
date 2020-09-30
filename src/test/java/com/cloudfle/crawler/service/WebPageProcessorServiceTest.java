@@ -1,4 +1,4 @@
-package com.sedna.crawler.service;
+package com.cloudfle.crawler.service;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItems;
@@ -17,8 +17,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 
-import com.sedna.crawler.exception.PageProcessingException;
-import com.sedna.crawler.model.PageResults;
+import com.cloudfle.crawler.exception.PageProcessingException;
+import com.cloudfle.crawler.model.PageResults;
 
 @RunWith (MockitoJUnitRunner.class)
 public class WebPageProcessorServiceTest {

@@ -1,4 +1,4 @@
-package com.sedna.crawler.service;
+package com.cloudfle.crawler.service;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -14,10 +14,10 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 
+import com.cloudfle.crawler.model.PageResults;
+import com.cloudfle.crawler.model.StaticAssets;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sedna.crawler.model.PageResults;
-import com.sedna.crawler.model.StaticAssets;
 
 @RunWith (MockitoJUnitRunner.class)
 public class ConsoleResultAggregatorServiceTest {

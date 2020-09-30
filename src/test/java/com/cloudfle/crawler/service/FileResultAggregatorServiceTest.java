@@ -1,4 +1,4 @@
-package com.sedna.crawler.service;
+package com.cloudfle.crawler.service;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -21,12 +21,12 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import com.cloudfle.crawler.model.PageResults;
+import com.cloudfle.crawler.model.StaticAssets;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sedna.crawler.model.PageResults;
-import com.sedna.crawler.model.StaticAssets;
 
 @RunWith (MockitoJUnitRunner.class)
 public class FileResultAggregatorServiceTest {
